@@ -120,14 +120,16 @@ export const Text = styled.label`
   margin: 40px 0px 16px 0px;
 `;
 
-export const TextInput = styled.input`
+export const TextArea = styled.textarea`
   width: 996px;
   height: 480px;
 
   border: 1px solid #bdbdbd;
   background: #fff;
+  resize: none;
 
   padding-left: 16px;
+  padding-top: 14px;
 `;
 
 export const AddressWrapper = styled.div`
@@ -188,6 +190,8 @@ export const AddressTopInput = styled.input`
 
   width: 1012px;
   height: 52px;
+
+  padding-left: 16px;
 `;
 
 export const AddressbottomInput = styled.input`
@@ -196,6 +200,8 @@ export const AddressbottomInput = styled.input`
   height: 52px;
 
   margin-top: 30px;
+
+  padding-left: 16px;
 `;
 
 export const ImageWrapper = styled.div`
@@ -270,10 +276,8 @@ export const MainSettingsRadioLabel = styled.label``;
 
 export const RegistrationButton = styled.button`
   padding: 14px 60px;
-  justify-content: center;
-  align-items: center;
-  background: #ffd600;
-  border: 1px solid #ffd600
+  background-color: #ffd600;
+  border: none;
 
   margin-top: 80px;
 
@@ -281,4 +285,28 @@ export const RegistrationButton = styled.button`
   font-family: Noto Sans CJK KR;
   font-size: 16px;
   font-weight: 500;
+`;
+
+export const WriterError = styled.div`
+  color: red;
+  margin-top: 10px;
+  font-size: 16px;
+`;
+
+export const PasswordError = styled.div`
+  color: red;
+  margin-top: 10px;
+  font-size: 16px;
+`;
+
+export const TitleError = styled.div`
+  color: red;
+  margin-top: 10px;
+  font-size: 16px;
+`;
+
+export const TextError = styled.div`
+  color: red;
+  margin-top: 10px;
+  font-size: 16px;
 `;

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   BoardContainer,
   BoardSubject,
@@ -15,7 +16,7 @@ import {
   TitleInput,
   TextWrapper,
   Text,
-  TextInput,
+  TextArea,
   AddressWrapper,
   Address,
   ZipcodeWrapper,
@@ -37,9 +38,65 @@ import {
   MainSettingsRadio,
   MainSettingsRadioLabel,
   RegistrationButton,
+  WriterError,
+  PasswordError,
+  TitleError,
+  TextError,
 } from '../../../styles/new';
 
 export default function New() {
+  const [writer, setWriter] = useState('');
+  const [password, setPassword] = useState('');
+  const [title, setTitle] = useState('');
+  const [text, setText] = useState('');
+
+  const [writerErrer, setWriterError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [titleError, setTitleError] = useState('');
+  const [textError, setTextError] = useState('');
+
+  function onChangeWriter(event) {
+    setWriter(event.target.value);
+  }
+
+  function onChangePassword(event) {
+    setPassword(event.target.value);
+  }
+
+  function onChangeTitle(event) {
+    setTitle(event.target.value);
+  }
+
+  function onChangeText(event) {
+    setText(event.target.value);
+  }
+
+  function onClickPost(event) {
+    console.log(writer);
+    console.log(password);
+    console.log(title);
+
+    if (writer == '') {
+      setWriterError('작성자를 입력해주세요!!');
+    }
+
+    if (password == '') {
+      setPasswordError('비밀번호를 입력해주세요!!');
+    }
+
+    if (title == '') {
+      setTitleError('제목을 입력해주세요!!');
+    }
+
+    if (text == '') {
+      setTextError('내용을 입력해주세요!!');
+    }
+
+    if (writer && password && title && text) {
+      alert('정상적으로 포스팅되었습니다.');
+    }
+  }
+
   return (
     <div>
       <BoardContainer>
@@ -51,22 +108,36 @@ export default function New() {
               <BoardWriter for="boardWriter">작성자</BoardWriter>
               <Star>*</Star>
             </WriterWrapperTop>
-            <BoardWriterInput type="text" id="boardWriter" placeholder="이름을 적어 주세요." />
+            <BoardWriterInput
+              type="text"
+              id="boardWriter"
+              placeholder="이름을 적어 주세요."
+              onChange={onChangeWriter}
+            />
+            <WriterError>{writerErrer}</WriterError>
           </WriterWrapper>
           <WriterPasswordWrapper>
             <BoardPassword for="boardPassword">비밀번호</BoardPassword>
-            <BoardPasswordInput type="text" id="boardPassword" placeholder="비밀번호를 입력해주세요." />
+            <BoardPasswordInput
+              type="text"
+              id="boardPassword"
+              placeholder="비밀번호를 입력해주세요."
+              onChange={onChangePassword}
+            />
+            <PasswordError>{passwordError}</PasswordError>
           </WriterPasswordWrapper>
         </InfoWrapper>
 
         <TitleWrapper>
           <Title for="title">제목</Title>
-          <TitleInput id="title" type="text" placeholder="제목을 작성해주세요." />
+          <TitleInput id="title" type="text" placeholder="제목을 작성해주세요." onChange={onChangeTitle} />
+          <TitleError>{titleError}</TitleError>
         </TitleWrapper>
 
         <TextWrapper>
           <Text for="text">내용</Text>
-          <TextInput id="text" type="text" placeholder="내용을 작성해주세요." />
+          <TextArea id="text" type="text" placeholder="내용을 작성해주세요." onChange={onChangeText} />
+          <TextError>{textError}</TextError>
         </TextWrapper>
 
         <AddressWrapper>
@@ -113,7 +184,7 @@ export default function New() {
           </MainSettingsRadioWrapper>
         </MainSettingsWrapper>
 
-        <RegistrationButton>등록하기</RegistrationButton>
+        <RegistrationButton onClick={onClickPost}>등록하기</RegistrationButton>
       </BoardContainer>
     </div>
   );
