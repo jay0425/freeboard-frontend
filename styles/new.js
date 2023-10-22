@@ -287,26 +287,8 @@ export const RegistrationButton = styled.button`
   font-weight: 500;
 `;
 
-export const WriterError = styled.div`
+export const Error = styled.div`
   color: red;
   margin-top: 10px;
-  font-size: 16px;
-`;
-
-export const PasswordError = styled.div`
-  color: red;
-  margin-top: 10px;
-  font-size: 16px;
-`;
-
-export const TitleError = styled.div`
-  color: red;
-  margin-top: 10px;
-  font-size: 16px;
-`;
-
-export const TextError = styled.div`
-  color: red;
-  margin-top: 10px;
-  font-size: 16px;
+  font-size: 14px;
 `;

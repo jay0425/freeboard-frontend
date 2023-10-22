@@ -38,10 +38,7 @@ import {
   MainSettingsRadio,
   MainSettingsRadioLabel,
   RegistrationButton,
-  WriterError,
-  PasswordError,
-  TitleError,
-  TextError,
+  Error,
 } from '../../../styles/new';
 
 export default function New() {
@@ -122,7 +119,7 @@ export default function New() {
               placeholder="이름을 적어 주세요."
               onChange={onChangeWriter}
             />
-            <WriterError>{writerErrer}</WriterError>
+            <Error>{writerErrer}</Error>
           </WriterWrapper>
           <WriterPasswordWrapper>
             <BoardPassword for="boardPassword">비밀번호</BoardPassword>
@@ -132,20 +129,20 @@ export default function New() {
               placeholder="비밀번호를 입력해주세요."
               onChange={onChangePassword}
             />
-            <PasswordError>{passwordError}</PasswordError>
+            <Error>{passwordError}</Error>
           </WriterPasswordWrapper>
         </InfoWrapper>
 
         <TitleWrapper>
           <Title for="title">제목</Title>
           <TitleInput id="title" type="text" placeholder="제목을 작성해주세요." onChange={onChangeTitle} />
-          <TitleError>{titleError}</TitleError>
+          <Error>{titleError}</Error>
         </TitleWrapper>
 
         <TextWrapper>
           <Text for="text">내용</Text>
           <TextArea id="text" type="text" placeholder="내용을 작성해주세요." onChange={onChangeText} />
-          <TextError>{textError}</TextError>
+          <Error>{textError}</Error>
         </TextWrapper>
 
         <AddressWrapper>
