@@ -76,19 +76,19 @@ export default function New() {
     console.log(password);
     console.log(title);
 
-    if (writer == '') {
+    if (!writer) {
       setWriterError('작성자를 입력해주세요!!');
     }
 
-    if (password == '') {
+    if (!password) {
       setPasswordError('비밀번호를 입력해주세요!!');
     }
 
-    if (title == '') {
+    if (!title) {
       setTitleError('제목을 입력해주세요!!');
     }
 
-    if (text == '') {
+    if (!text) {
       setTextError('내용을 입력해주세요!!');
     }
 
