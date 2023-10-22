@@ -57,25 +57,33 @@ export default function New() {
 
   function onChangeWriter(event) {
     setWriter(event.target.value);
+    if (event.target.value) {
+      setWriterError('');
+    }
   }
 
   function onChangePassword(event) {
     setPassword(event.target.value);
+    if (event.target.value) {
+      setPasswordError('');
+    }
   }
 
   function onChangeTitle(event) {
     setTitle(event.target.value);
+    if (event.target.value) {
+      setTitleError('');
+    }
   }
 
   function onChangeText(event) {
     setText(event.target.value);
+    if (event.target.value) {
+      setTextError('');
+    }
   }
 
   function onClickPost(event) {
-    console.log(writer);
-    console.log(password);
-    console.log(title);
-
     if (!writer) {
       setWriterError('작성자를 입력해주세요!!');
     }
@@ -119,7 +127,7 @@ export default function New() {
           <WriterPasswordWrapper>
             <BoardPassword for="boardPassword">비밀번호</BoardPassword>
             <BoardPasswordInput
-              type="text"
+              type="password"
               id="boardPassword"
               placeholder="비밀번호를 입력해주세요."
               onChange={onChangePassword}
