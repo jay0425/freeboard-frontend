@@ -40,8 +40,27 @@ import {
   RegistrationButton,
   Error,
 } from '../../../styles/new';
+import { gql, useMutation } from '@apollo/client';
+
+const CREATE_BOARD = gql`
+  mutation createBoard($createBoardInput: CreateBoardInput!) {
+    createBoard(createBoardInput: $createBoardInput) {
+      _id
+      writer
+      title
+      contents
+      youtubeUrl
+      likeCount
+      dislikeCount
+      createdAt
+      updatedAt
+    }
+  }
+`;
 
 export default function New() {
+  const [createBoard] = useMutation(CREATE_BOARD);
+
   const [writer, setWriter] = useState('');
   const [password, setPassword] = useState('');
   const [title, setTitle] = useState('');
@@ -52,35 +71,35 @@ export default function New() {
   const [titleError, setTitleError] = useState('');
   const [textError, setTextError] = useState('');
 
-  function onChangeWriter(event) {
+  const onChangeWriter = (event) => {
     setWriter(event.target.value);
     if (event.target.value) {
       setWriterError('');
     }
-  }
+  };
 
-  function onChangePassword(event) {
+  const onChangePassword = (event) => {
     setPassword(event.target.value);
     if (event.target.value) {
       setPasswordError('');
     }
-  }
+  };
 
-  function onChangeTitle(event) {
+  const onChangeTitle = (event) => {
     setTitle(event.target.value);
     if (event.target.value) {
       setTitleError('');
     }
-  }
+  };
 
-  function onChangeText(event) {
+  const onChangeText = (event) => {
     setText(event.target.value);
     if (event.target.value) {
       setTextError('');
     }
-  }
+  };
 
-  function onClickPost(event) {
+  const onClickSubmit = async (event) => {
     if (!writer) {
       setWriterError('작성자를 입력해주세요!!');
     }
@@ -100,7 +119,19 @@ export default function New() {
     if (writer && password && title && text) {
       alert('정상적으로 포스팅되었습니다.');
     }
-  }
+
+    const result = await createBoard({
+      variables: {
+        createBoardInput: {
+          writer: writer,
+          password: password,
+          title: title,
+          contents: text,
+        },
+      },
+    });
+    console.log(result);
+  };
 
   return (
     <div>
@@ -189,7 +220,7 @@ export default function New() {
           </MainSettingsRadioWrapper>
         </MainSettingsWrapper>
 
-        <RegistrationButton onClick={onClickPost}>등록하기</RegistrationButton>
+        <RegistrationButton onClick={onClickSubmit}>등록하기</RegistrationButton>
       </BoardContainer>
     </div>
   );
