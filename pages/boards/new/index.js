@@ -64,12 +64,12 @@ export default function New() {
   const [writer, setWriter] = useState('');
   const [password, setPassword] = useState('');
   const [title, setTitle] = useState('');
-  const [text, setText] = useState('');
+  const [contents, setContents] = useState('');
 
   const [writerErrer, setWriterError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [titleError, setTitleError] = useState('');
-  const [textError, setTextError] = useState('');
+  const [contentsError, setContentsError] = useState('');
 
   const onChangeWriter = (event) => {
     setWriter(event.target.value);
@@ -93,9 +93,9 @@ export default function New() {
   };
 
   const onChangeText = (event) => {
-    setText(event.target.value);
+    setContents(event.target.value);
     if (event.target.value) {
-      setTextError('');
+      setContentsError('');
     }
   };
 
@@ -112,8 +112,8 @@ export default function New() {
       setTitleError('제목을 입력해주세요!!');
     }
 
-    if (!text) {
-      setTextError('내용을 입력해주세요!!');
+    if (!contents) {
+      contentsError('내용을 입력해주세요!!');
     }
 
     if (writer && password && title && text) {
@@ -173,7 +173,7 @@ export default function New() {
         <TextWrapper>
           <Text for="text">내용</Text>
           <TextArea id="text" type="text" placeholder="내용을 작성해주세요." onChange={onChangeText} />
-          <Error>{textError}</Error>
+          <Error>{contentsError}</Error>
         </TextWrapper>
 
         <AddressWrapper>
