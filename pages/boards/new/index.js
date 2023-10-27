@@ -117,20 +117,20 @@ export default function New() {
     }
 
     if (writer && password && title && text) {
+      const result = await createBoard({
+        variables: {
+          createBoardInput: {
+            // shorthand-property
+            writer,
+            password,
+            title,
+            contents,
+          },
+        },
+      });
+      console.log(result);
       alert('정상적으로 포스팅되었습니다.');
     }
-
-    const result = await createBoard({
-      variables: {
-        createBoardInput: {
-          writer: writer,
-          password: password,
-          title: title,
-          contents: text,
-        },
-      },
-    });
-    console.log(result);
   };
 
   return (
