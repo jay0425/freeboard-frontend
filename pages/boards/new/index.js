@@ -41,6 +41,7 @@ import {
   Error,
 } from '../../../styles/new';
 import { gql, useMutation } from '@apollo/client';
+import { useRouter } from 'next/router';
 
 const CREATE_BOARD = gql`
   mutation createBoard($createBoardInput: CreateBoardInput!) {
@@ -59,6 +60,8 @@ const CREATE_BOARD = gql`
 `;
 
 export default function New() {
+  const router = useRouter();
+
   const [createBoard] = useMutation(CREATE_BOARD);
 
   const [writer, setWriter] = useState('');
@@ -92,7 +95,7 @@ export default function New() {
     }
   };
 
-  const onChangeText = (event) => {
+  const onChangeContents = (event) => {
     setContents(event.target.value);
     if (event.target.value) {
       setContentsError('');
@@ -116,20 +119,25 @@ export default function New() {
       contentsError('내용을 입력해주세요!!');
     }
 
-    if (writer && password && title && text) {
-      const result = await createBoard({
-        variables: {
-          createBoardInput: {
-            // shorthand-property
-            writer,
-            password,
-            title,
-            contents,
+    if (writer && password && title && contents) {
+      try {
+        const result = await createBoard({
+          variables: {
+            createBoardInput: {
+              // shorthand-property
+              writer,
+              password,
+              title,
+              contents,
+            },
           },
-        },
-      });
-      console.log(result);
-      alert('정상적으로 포스팅되었습니다.');
+        });
+        console.log(result);
+        alert('정상적으로 포스팅되었습니다.');
+        router.push(`/boards/${result.data.createBoard._id}`);
+      } catch (error) {
+        alert(error.message);
+      }
     }
   };
 
@@ -172,7 +180,7 @@ export default function New() {
 
         <TextWrapper>
           <Text for="text">내용</Text>
-          <TextArea id="text" type="text" placeholder="내용을 작성해주세요." onChange={onChangeText} />
+          <TextArea id="text" type="text" placeholder="내용을 작성해주세요." onChange={onChangeContents} />
           <Error>{contentsError}</Error>
         </TextWrapper>
 
