@@ -5,6 +5,8 @@ import { CREATE_BOARD } from './BoardWrite.queries'; // export는 골라서 가�
 import BoardWriteUI from './BoardWrite.presenter'; // export deault로 한개만 가져오기
 
 export default function BoardWrite() {
+  const [isActive, setIsActive] = useState(false);
+
   const router = useRouter();
 
   const [createBoard] = useMutation(CREATE_BOARD);
@@ -24,6 +26,7 @@ export default function BoardWrite() {
     if (event.target.value) {
       setWriterError('');
     }
+    if (event.target.value && password && title && contents) setIsActive(true);
   };
 
   const onChangePassword = (event) => {
@@ -31,6 +34,7 @@ export default function BoardWrite() {
     if (event.target.value) {
       setPasswordError('');
     }
+    if (writer && event.target.value && title && contents) setIsActive(true);
   };
 
   const onChangeTitle = (event) => {
@@ -38,6 +42,7 @@ export default function BoardWrite() {
     if (event.target.value) {
       setTitleError('');
     }
+    if (writer && password && event.target.value && contents) setIsActive(true);
   };
 
   const onChangeContents = (event) => {
@@ -45,6 +50,7 @@ export default function BoardWrite() {
     if (event.target.value) {
       setContentsError('');
     }
+    if (writer && password && title && event.target.value) setIsActive(true);
   };
 
   const onClickSubmit = async (event) => {
@@ -98,6 +104,7 @@ export default function BoardWrite() {
         onChangeTitle={onChangeTitle}
         onChangeContents={onChangeContents}
         onClickSubmit={onClickSubmit}
+        isActive={isActive}
       />
     </div>
   );

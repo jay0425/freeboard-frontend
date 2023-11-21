@@ -276,7 +276,8 @@ export const MainSettingsRadioLabel = styled.label``;
 
 export const RegistrationButton = styled.button`
   padding: 14px 60px;
-  background-color: #ffd600;
+
+  background-color: ${(props) => (props.isActive === true ? '#ffd600' : '')};
   border: none;
 
   margin-top: 80px;
