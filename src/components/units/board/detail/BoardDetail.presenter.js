@@ -19,9 +19,11 @@ export default function BoardDetailUI(props) {
         </S.Body>
       </S.CardWrapper>
       <S.ButtonWrapper>
-        <S.Button>목록으로</S.Button>
+        <S.Button onClick={props.onClickBoards}>목록으로</S.Button>
         <S.Button>수정하기</S.Button>
-        <S.Button>삭제하기</S.Button>
+        <S.Button id={props.data?.fetchBoard?._id} onClick={props.onClickDelete}>
+          삭제하기
+        </S.Button>
       </S.ButtonWrapper>
     </S.Wrapper>
   );
