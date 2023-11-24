@@ -1,28 +1,28 @@
 import * as S from './BoardList.styles';
 
-export default function BoardDetailUI(props) {
+export default function BoardsUI(props) {
   return (
-    <S.Wrapper>
-      <S.CardWrapper>
-        <S.Header>
-          <S.AvatarWrapper>
-            <S.Avatar src="/images/avatar.svg" alt="프로필 이미지"></S.Avatar>
-            <S.Info>
-              <S.Writer>{props.data?.fetchBoard?.writer}</S.Writer>
-              <S.CreatedAt>{props.data?.fetchBoard?.createdAt}</S.CreatedAt>
-            </S.Info>
-          </S.AvatarWrapper>
-        </S.Header>
-        <S.Body>
-          <S.Title>{props.data?.fetchBoard?.title}</S.Title>
-          <S.Contents>{props.data?.fetchBoard?.contents}</S.Contents>
-        </S.Body>
-      </S.CardWrapper>
-      <S.ButtonWrapper>
-        <S.Button>목록으로</S.Button>
-        <S.Button>수정하기</S.Button>
-        <S.Button>삭제하기</S.Button>
-      </S.ButtonWrapper>
-    </S.Wrapper>
+    <>
+      <S.Wrapper>
+        <S.BoardsUl>
+          <S.HeadLi>ID</S.HeadLi>
+          <S.HeadLi>제목</S.HeadLi>
+          <S.HeadLi>작성자</S.HeadLi>
+          <S.HeadLi>날짜</S.HeadLi>
+          {props.data?.fetchBoards.map((el) => (
+            <S.FectchBoardsMap id={el._id} key={el._id} onClick={props.onClickMoveToDetail}>
+              <S.BodyLi>{String(el._id).slice(-4).toUpperCase()}</S.BodyLi>
+              <S.BodyLi>{el.title}</S.BodyLi>
+              <S.BodyLi>{el.writer}</S.BodyLi>
+              <S.BodyLi>{el.createdAt}</S.BodyLi>
+            </S.FectchBoardsMap>
+          ))}
+        </S.BoardsUl>
+        <S.WriteButton onClick={props.onClickMoveToBoardNew}>
+          <S.Pencil src="/images/pencil.svg" alt="연필 이미지" />
+          게시물 등록하기
+        </S.WriteButton>
+      </S.Wrapper>
+    </>
   );
 }
