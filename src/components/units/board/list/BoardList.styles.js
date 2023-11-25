@@ -40,6 +40,10 @@ export const FectchBoardsMap = styled.div`
   border-top: 1px solid #bdbdbd;
 
   padding: 14px 0px;
+
+  :hover {
+    color: pink;
+  }
 `;
 
 export const BodyLi = styled.li`

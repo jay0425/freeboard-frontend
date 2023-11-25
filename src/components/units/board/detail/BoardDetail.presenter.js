@@ -1,3 +1,4 @@
+import { getDate } from '../../../../../src/commons/libraries/utils';
 import * as S from './BoardDetail.styles';
 
 export default function BoardDetailUI(props) {
@@ -9,7 +10,7 @@ export default function BoardDetailUI(props) {
             <S.Avatar src="/images/avatar.svg" alt="프로필 이미지"></S.Avatar>
             <S.Info>
               <S.Writer>{props.data?.fetchBoard?.writer}</S.Writer>
-              <S.CreatedAt>{props.data?.fetchBoard?.createdAt}</S.CreatedAt>
+              <S.CreatedAt>{getDate(props.data?.fetchBoard?.createdAt)}</S.CreatedAt>
             </S.Info>
           </S.AvatarWrapper>
         </S.Header>

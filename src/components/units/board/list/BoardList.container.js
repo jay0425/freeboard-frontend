@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 import * as S from './BoardList.styles';
 import { useRouter } from 'next/router';
 import { FETCH_BOARDS } from './BoardList.queries';
-import BoardsUI from './BoardList.presenter';
+import BoardListUI from './BoardList.presenter';
 
 export default function BoardList() {
   const router = useRouter();
@@ -17,7 +17,7 @@ export default function BoardList() {
   };
 
   return (
-    <BoardsUI
+    <BoardListUI
       router={router}
       data={data}
       onClickMoveToBoardNew={onClickMoveToBoardNew}

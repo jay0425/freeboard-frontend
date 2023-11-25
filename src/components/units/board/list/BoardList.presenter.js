@@ -1,6 +1,7 @@
+import { getDate } from '../../../../../src/commons/libraries/utils';
 import * as S from './BoardList.styles';
 
-export default function BoardsUI(props) {
+export default function BoardListUI(props) {
   return (
     <>
       <S.Wrapper>
@@ -14,7 +15,7 @@ export default function BoardsUI(props) {
               <S.BodyLi>{String(el._id).slice(-4).toUpperCase()}</S.BodyLi>
               <S.BodyLi>{el.title}</S.BodyLi>
               <S.BodyLi>{el.writer}</S.BodyLi>
-              <S.BodyLi>{el.createdAt}</S.BodyLi>
+              <S.BodyLi>{getDate(el.createdAt)}</S.BodyLi>
             </S.FectchBoardsMap>
           ))}
         </S.BoardsUl>
