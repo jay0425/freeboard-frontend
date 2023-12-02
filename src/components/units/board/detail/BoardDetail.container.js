@@ -17,11 +17,11 @@ export default function BoardWrite() {
   const onClickDelete = () => {
     deleteBoard({
       variables: {
-        boardId: { boardId: router.query.boardId },
+        boardId: router.query.boardId,
       },
     });
     alert('삭제되었습니다.');
-    router.push(`/boards`);
+    router.push(`/boards/`);
   };
 
   const onClickBoards = () => {

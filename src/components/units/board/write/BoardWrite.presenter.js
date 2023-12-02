@@ -18,7 +18,7 @@ export default function BoardWriteUI(props) {
               placeholder="이름을 적어 주세요."
               onChange={props.onChangeWriter}
               defaultValue={props.data?.fetchBoard.writer}
-              disabled={props.data?.fetchBoard.writer}
+              readOnly={props.data?.fetchBoard.writer}
             />
             <S.Error>{props.writerErrer}</S.Error>
           </S.WriterWrapper>

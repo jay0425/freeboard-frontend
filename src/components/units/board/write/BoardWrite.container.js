@@ -110,51 +110,37 @@ export default function BoardWrite(props) {
   };
 
   const onClickUpdate = async (event) => {
-    // if (writer) {
-    //   myvariables.writer = writer;
-    // }
-    // if (password) {
-    //   myvariables.password = password;
-    // }
-    // if (title) {
-    //   myvariables.title = title;
-    // }
-    // if (contents) {
-    //   myvariables.contents = contents;
-    // }
-
-    if (!writer) {
-      setWriterError('작성자를 입력해주세요!!');
+    if (!title && !contents) {
+      alert('수정한 내용이 없습니다.');
     }
 
     if (!password) {
-      setPasswordError('비밀번호를 입력해주세요!!');
+      alert('비밀번호를 입력해주세요.');
     }
 
-    if (!title) {
-      setTitleError('제목을 입력해주세요!!');
-    }
+    if (title || contents) {
+      if (password) {
+        const updateBoardInput = {};
+        if (title) {
+          updateBoardInput.title = title;
+        }
+        if (contents) {
+          updateBoardInput.contents = contents;
+        }
 
-    if (!contents) {
-      setContentsError('내용을 입력해주세요!!');
-    }
-
-    if (writer && password && title && contents) {
-      try {
-        const result = await updateBoard({
-          variables: {
-            boardId: router.query.boardId,
-            password,
-            updateBoardInput: {
-              title,
-              contents,
+        try {
+          const result = await updateBoard({
+            variables: {
+              boardId: router.query.boardId,
+              password,
+              updateBoardInput,
             },
-          },
-        });
-        alert('정상적으로 수정되었습니다.');
-        router.push(`/boards/${result.data.updateBoard._id}`);
-      } catch (error) {
-        alert(error.message);
+          });
+          alert('정상적으로 수정되었습니다.');
+          router.push(`/boards/${result.data.updateBoard._id}`);
+        } catch (error) {
+          alert(error.message);
+        }
       }
     }
   };
