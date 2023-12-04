@@ -274,6 +274,11 @@ export const MainSettingsRadio = styled.input`
 
 export const MainSettingsRadioLabel = styled.label``;
 
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-contents: center;
+`;
+
 export const RegistrationButton = styled.button`
   padding: 14px 60px;
 
@@ -286,6 +291,14 @@ export const RegistrationButton = styled.button`
   font-family: Noto Sans CJK KR;
   font-size: 16px;
   font-weight: 500;
+
+  cursor: pointer;
+`;
+
+export const CancelButton = styled.button`
+  background: #bdbdbd;
+
+  cursor: pointer;
 `;
 
 export const Error = styled.div`

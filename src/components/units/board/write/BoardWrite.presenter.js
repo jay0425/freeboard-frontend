@@ -102,12 +102,16 @@ export default function BoardWriteUI(props) {
           </S.MainSettingsRadioWrapper>
         </S.MainSettingsWrapper>
 
-        <S.RegistrationButton
-          onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit}
-          isActive={props.isActive}
-        >
-          {props.isEdit ? '수정' : '등록'}하기
-        </S.RegistrationButton>
+        <S.ButtonWrapper>
+          <S.CancelButton>취소하기</S.CancelButton>
+          <S.RegistrationButton
+            onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit}
+            isActive={props.isActive}
+            isEdit={props.isEdit}
+          >
+            {props.isEdit ? '수정' : '등록'}하기
+          </S.RegistrationButton>
+        </S.ButtonWrapper>
       </S.BoardContainer>
     </div>
   );
