@@ -151,6 +151,10 @@ export default function BoardWrite(props) {
     router.push(`/boards/${result.data.updateBoard._id}`);
   };
 
+  const moveToBoards = () => {
+    router.push(`/boards`);
+  };
+
   return (
     <div>
       <BoardWriteUI
@@ -168,6 +172,7 @@ export default function BoardWrite(props) {
         isEdit={props.isEdit}
         data={props.data}
         moveToDetailPage={moveToDetailPage}
+        moveToBoards={moveToBoards}
       />
     </div>
   );

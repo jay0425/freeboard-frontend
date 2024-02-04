@@ -24,7 +24,7 @@ export const BoardSubject = styled.div`
 `;
 
 export const InfoWrapper = styled.div`
-  weight: 996px;
+  /* weight: 996px; */
   display: flex;
   justify-content: space-between;
 `;
@@ -138,13 +138,13 @@ export const AddressWrapper = styled.div`
 `;
 
 export const Address = styled.div`
-  color: #000
+  color: #000;
   font-family: Noto Sans CJK KR;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
 
-  margin-bottom:16px;
+  margin-bottom: 16px;
 `;
 
 export const ZipcodeWrapper = styled.div``;
@@ -277,6 +277,7 @@ export const MainSettingsRadioLabel = styled.label``;
 export const ButtonWrapper = styled.div`
   display: flex;
   justify-contents: center;
+  gap: 10px;
 `;
 
 export const RegistrationButton = styled.button`
@@ -296,7 +297,17 @@ export const RegistrationButton = styled.button`
 `;
 
 export const CancelButton = styled.button`
-  background: #bdbdbd;
+  padding: 14px 60px;
+
+  background-color: '';
+
+  border: none;
+
+  margin-top: 80px;
+
+  color: #000;
+  font-size: 16px;
+  font-weight: 500;
 
   cursor: pointer;
 `;

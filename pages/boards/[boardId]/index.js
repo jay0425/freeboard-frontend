@@ -6,8 +6,8 @@ export default function BoardDetailPage() {
   return (
     <>
       <BoardDetail />
-      <BoardCommentWritePage />
-      <BoardCommentListPage />
+      {/* <BoardCommentWritePage />
+      <BoardCommentListPage /> */}
     </>
   );
 }

@@ -103,7 +103,7 @@ export default function BoardWriteUI(props) {
         </S.MainSettingsWrapper>
 
         <S.ButtonWrapper>
-          <S.CancelButton>취소하기</S.CancelButton>
+          <S.CancelButton onClick={props.moveToBoards}>취소하기</S.CancelButton>
           <S.RegistrationButton
             onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit}
             isActive={props.isActive}
