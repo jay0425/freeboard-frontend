@@ -8,6 +8,8 @@ export const Wrapper = styled.div`
 `;
 
 export const CardWrapper = styled.div`
+  box-sizing: border-box;
+
   width: 1200px;
   min-height: 800px;
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.2);
