@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 `;
 
 export const CardWrapper = styled.div`
@@ -75,10 +75,10 @@ export const Contents = styled.div`
 `;
 
 export const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
 
-  margin-top: 101px;
+  margin: 101px 0 87px 316px;
 `;
 
 export const Button = styled.button`
