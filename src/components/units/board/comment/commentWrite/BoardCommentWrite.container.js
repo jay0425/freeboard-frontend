@@ -32,15 +32,15 @@ export default function BoardCommentWritePage() {
 
   const [createBoardComment] = useMutation(CREATE_BOARD_COMMENT);
 
-  const onChangeWriter = () => {
+  const onChangeWriter = (event) => {
     setWriter(event.target.value);
   };
 
-  const onChangePassword = () => {
+  const onChangePassword = (event) => {
     setPassword(event.target.value);
   };
 
-  const onChangeContents = () => {
+  const onChangeContents = (event) => {
     setContents(event.target.value);
   };
 
